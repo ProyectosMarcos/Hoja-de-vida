@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/styles.css" />
     <title>CV Marcos Fernandez</title>
   </head>
   <body>
@@ -112,12 +113,16 @@
         <section class="github">
           <article>
             <h3>Perfil GitHub:</h3>
-            <a
-              href="https://github.com/ProyectosMarcos"
-              target="_blank"
-              rel="noopener"
-              >ProyectosMarcos</a
-            >
+            <ul>
+              <li>
+                <a
+                  href="https://github.com/ProyectosMarcos"
+                  target="_blank"
+                  rel="noopener"
+                  >ProyectosMarcos</a
+                >
+              </li>
+            </ul>
           </article>
         </section>
       </section>
@@ -224,14 +229,19 @@
           <form action="">
             <article>
               <label for="name">Nombre:</label>
-              <input type="text" id="name" placeholder="nombre" />
+              <input
+                type="text"
+                id="name"
+                placeholder="Ingresa tu nombre"
+                required
+              />
             </article>
 
             <br />
 
             <article>
               <label for="asunto">Asunto:</label>
-              <input type="text" id="asunto" placeholder="asunto" />
+              <input type="text" id="asunto" placeholder="Asunto" required />
             </article>
 
             <br />
@@ -243,6 +253,7 @@
                 cols="30"
                 rows="10"
                 placeholder="Mensaje"
+                required
               ></textarea>
 
               <br /><br />
@@ -255,7 +266,7 @@
 
       <br />
 
-      <a href="#titulo">Volver al inicio</a>
+      <a class="inicio" href="#titulo">Volver al inicio</a>
     </main>
     <footer class="footer"></footer>
   </body>

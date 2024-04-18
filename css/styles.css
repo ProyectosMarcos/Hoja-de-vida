@@ -1,0 +1,167 @@
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+:root {
+    --background-primary: #000078;
+    --background-secondary: #22c9c9;
+    --color-primary: rgb(171, 190, 241);
+    --color-secondary: rgb(17, 157, 212);
+    --color-white: #ffff;
+
+}
+
+h3 {
+    font-size: 1.6rem;
+}
+
+h4 {
+    font-size: 1.4rem;
+    color: var(--color-white);
+    background-color: var(--background-primary);
+}
+
+body :is(p, li, a) {
+    font-size: 1.3rem;
+}
+
+p {
+    color: black;
+    background-color: #ffeee7;
+}
+
+
+
+li {
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    background-color: var(--background-secondary);
+}
+
+a:visited {
+    color: rgb(2, 31, 46);
+}
+
+
+/*************************************************/
+/** header **/
+.header {
+    background-color: var(--background-primary);
+    text-align: center;
+    color: var(--color-white);
+    padding: 1em;
+}
+
+/**Fin estilos header **/
+
+/** main **/
+.main {
+    color: var(--color-white);
+}
+
+.descripcion {
+    border: thin solid rgb(86, 127, 151);
+    background-color: #e9fff9;
+    text-align: center;
+    color: black;
+}
+
+body :is(.localidad, .herramientas, .educacion,
+    .capacitaciones,
+    .experiencia__laboral, .contacto) {
+    background-color: #cbf3f3;
+    border: thick solid white
+}
+
+body :is(.localidad, .herramientas, .educacion,
+    .capacitaciones,
+    .experiencia__laboral, .contacto) h3 {
+    background-color: #000078;
+}
+
+body :is(.localidad, .herramientas, .educacion,
+    .capacitaciones,
+    .experiencia__laboral, .contacto) ul {
+    padding: 1em;
+    list-style-type: none;
+}
+
+body :is(.localidad, .herramientas, .educacion,
+    .capacitaciones,
+    .experiencia__laboral, .contacto) ul:hover {
+    background-color: rgb(90, 88, 88);
+}
+
+body :is(.localidad, .herramientas, .educacion,
+    .capacitaciones,
+    .experiencia__laboral, .contacto) li {
+    background-color: #fffaf4;
+    border: solid thin rgb(200, 201, 201);
+    color: black;
+    padding: 1em;
+}
+
+
+
+/* formulario */
+.contacto {
+    text-align: center;
+}
+
+.contacto h3 {
+    font-size: 1.7rem;
+}
+
+
+
+form label {
+    color: black;
+    font-size: 1.3rem;
+
+}
+
+form article {
+    margin-top: 1em;
+}
+
+form :is(input, textarea) {
+    font-size: 1.1rem;
+}
+
+button[type="submit"] {
+    width: 5rem;
+    height: 2rem;
+    font-size: 1rem;
+    background-color: #59d2a5;
+    color: black;
+    cursor: pointer;
+
+}
+
+button[type="submit"]:active {
+    transform: scale(0.9);
+    transition: transform 0.1s ease;
+}
+
+/* Fin estilos formulario */
+
+
+/** Fin estilos main **/
