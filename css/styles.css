@@ -3,6 +3,10 @@ html {
     font-size: 16px;
 }
 
+body {
+    min-height: 100svh;
+    min-width: 100%;
+}
 
 *,
 *::before,
@@ -18,7 +22,8 @@ html {
     --color-primary: rgb(171, 190, 241);
     --color-secondary: rgb(17, 157, 212);
     --color-white: #ffff;
-
+    --color-menu-hamburguesa: #3be463;
+    --background-color-menu-hamburguesa: #f2f2d4;
 }
 
 h3 {
@@ -60,108 +65,357 @@ a:visited {
     color: rgb(2, 31, 46);
 }
 
+/* Version Movil */
+@media(width < 767px) {
+    .container__areas {
+        display: grid;
+        grid-template:
+            "header" 77px
+            "navbar" 50px
+            "main" 1fr
+            "footer" 60px
+            / 1fr;
+    }
+
+    /** header **/
+    .header {
+        background-color: var(--background-primary);
+        text-align: center;
+        color: var(--color-white);
+        padding: 1em;
+        grid-area: header;
+        font-size: .7rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navbar {
+        grid-area: navbar;
+    }
+
+
+
+    /** button hamburguesa **/
+    .btn__menu {
+        position: fixed;
+        width: 3rem;
+        height: 3rem;
+        cursor: pointer;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 999;
+        opacity: 0;
+    }
+
+    .btn__hamburguesa {
+        position: fixed;
+        width: 3rem;
+        height: 0.6rem;
+        background-color: var(--color-menu-hamburguesa);
+        border-radius: 0.3rem;
+        transform: rotate(0deg) translate(0, -1.2rem);
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 998;
+    }
+
+    .btn__hamburguesa::before,
+    .btn__hamburguesa::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 0.6rem;
+        background-color: var(--color-menu-hamburguesa);
+        border-radius: 0.3rem;
+        transition: transform 500ms ease;
+    }
+
+    .btn__hamburguesa::before {
+        transform: rotate(0deg) translate(0, -0.9rem);
+    }
+
+    .btn__hamburguesa::after {
+        transform: rotate(0deg) translate(0, 0.3rem);
+    }
+
+    .btn__menu:checked+.btn__hamburguesa {
+        background-color: transparent;
+    }
+
+    .btn__menu:checked+.btn__hamburguesa::before {
+        transform: rotate(45deg) translate(0, 0);
+    }
+
+    .btn__menu:checked+.btn__hamburguesa::after {
+        transform: rotate(-45deg) translate(0.4rem, -0.5rem)
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 1;
+        left: 0;
+        z-index: 997;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: skyblue;
+        transform: translate(0, -100%);
+        transition: transform 500ms ease-in-out, background-color 500ms ease;
+    }
+
+    .btn__menu:checked~.navbar {
+        transform: translate(0, 0);
+    }
+
+    .navbar__menu {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+    }
+
+    /**Fin estilos header **/
+
+    /** main **/
+    .main {
+        color: var(--color-white);
+        grid-area: main;
+    }
+
+    .descripcion {
+        border: thin solid rgb(86, 127, 151);
+        background-color: #e9fff9;
+        text-align: center;
+        color: black;
+        font-size: .8rem;
+        width: auto;
+
+    }
+
+    body :is(.localidad, .herramientas, .educacion,
+        .capacitaciones,
+        .experiencia__laboral, .contacto) {
+        background-color: #cbf3f3;
+        border: thick solid white
+    }
+
+    body :is(.localidad, .herramientas, .educacion,
+        .capacitaciones,
+        .experiencia__laboral, .contacto) h3 {
+        background-color: #000078;
+    }
+
+    body :is(.localidad, .herramientas, .educacion,
+        .capacitaciones,
+        .experiencia__laboral, .contacto) ul {
+        padding: 1em;
+        list-style-type: none;
+    }
+
+    body :is(.localidad, .herramientas, .educacion,
+        .capacitaciones,
+        .experiencia__laboral, .contacto) ul:hover {
+        background-color: rgb(90, 88, 88);
+    }
+
+    body :is(.localidad, .herramientas, .educacion,
+        .capacitaciones,
+        .experiencia__laboral, .contacto) li {
+        background-color: #fffaf4;
+        border: solid thin rgb(200, 201, 201);
+        color: black;
+        padding: 1em;
+    }
+
+
+
+    /* formulario */
+    .contacto {
+        text-align: center;
+    }
+
+    .contacto h3 {
+        font-size: 1.7rem;
+    }
+
+
+
+    form label {
+        color: black;
+        font-size: 1.3rem;
+
+    }
+
+    form article {
+        margin-top: 1em;
+    }
+
+    form :is(input, textarea) {
+        font-size: 1.1rem;
+    }
+
+    button[type="submit"] {
+        width: 5rem;
+        height: 2rem;
+        font-size: 1rem;
+        background-color: #59d2a5;
+        color: black;
+        cursor: pointer;
+
+    }
+
+    button[type="submit"]:active {
+        transform: scale(0.9);
+        transition: transform 0.1s ease;
+    }
+
+    /* Fin estilos formulario */
+
+
+    /** Fin estilos main **/
+    /* footer */
+    .footer {
+        grid-area: footer;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #0303037a;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--color-white);
+    }
+
+    .link {
+        display: flex;
+        justify-content: center;
+    }
+}
 
 /*************************************************/
-/** header **/
-.header {
-    background-color: var(--background-primary);
-    text-align: center;
-    color: var(--color-white);
-    padding: 1em;
+@media(min-width:768px) {
+
+    /** header **/
+    .header {
+        background-color: var(--background-primary);
+        text-align: center;
+        color: var(--color-white);
+        padding: 1em;
+    }
+
+    .navbar {
+        padding: 1em;
+    }
+
+    .navbar__menu {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        font-size: 1.5rem;
+        list-style-type: none;
+    }
+
+    .btn__menu {
+        display: none;
+    }
+
+    /**Fin estilos header **/
+
+    /** main **/
+    .main {
+        color: var(--color-white);
+    }
+
+    .descripcion {
+        border: thin solid rgb(86, 127, 151);
+        background-color: #e9fff9;
+        text-align: center;
+        color: black;
+    }
+
+    body :is(.localidad, .herramientas, .educacion,
+        .capacitaciones,
+        .experiencia__laboral, .contacto) {
+        background-color: #cbf3f3;
+        border: thick solid white
+    }
+
+    body :is(.localidad, .herramientas, .educacion,
+        .capacitaciones,
+        .experiencia__laboral, .contacto) h3 {
+        background-color: #000078;
+    }
+
+    body :is(.localidad, .herramientas, .educacion,
+        .capacitaciones,
+        .experiencia__laboral, .contacto) ul {
+        padding: 1em;
+        list-style-type: none;
+    }
+
+    body :is(.localidad, .herramientas, .educacion,
+        .capacitaciones,
+        .experiencia__laboral, .contacto) ul:hover {
+        background-color: rgb(90, 88, 88);
+    }
+
+    body :is(.localidad, .herramientas, .educacion,
+        .capacitaciones,
+        .experiencia__laboral, .contacto) li {
+        background-color: #fffaf4;
+        border: solid thin rgb(200, 201, 201);
+        color: black;
+        padding: 1em;
+    }
+
+
+
+    /* formulario */
+    .contacto {
+        text-align: center;
+    }
+
+    .contacto h3 {
+        font-size: 1.7rem;
+    }
+
+
+
+    form label {
+        color: black;
+        font-size: 1.3rem;
+
+    }
+
+    form article {
+        margin-top: 1em;
+    }
+
+    form :is(input, textarea) {
+        font-size: 1.1rem;
+    }
+
+    button[type="submit"] {
+        width: 5rem;
+        height: 2rem;
+        font-size: 1rem;
+        background-color: #59d2a5;
+        color: black;
+        cursor: pointer;
+
+    }
+
+    button[type="submit"]:active {
+        transform: scale(0.9);
+        transition: transform 0.1s ease;
+    }
+
+    /* Fin estilos formulario */
+
+
+    /** Fin estilos main **/
 }
-
-/**Fin estilos header **/
-
-/** main **/
-.main {
-    color: var(--color-white);
-}
-
-.descripcion {
-    border: thin solid rgb(86, 127, 151);
-    background-color: #e9fff9;
-    text-align: center;
-    color: black;
-}
-
-body :is(.localidad, .herramientas, .educacion,
-    .capacitaciones,
-    .experiencia__laboral, .contacto) {
-    background-color: #cbf3f3;
-    border: thick solid white
-}
-
-body :is(.localidad, .herramientas, .educacion,
-    .capacitaciones,
-    .experiencia__laboral, .contacto) h3 {
-    background-color: #000078;
-}
-
-body :is(.localidad, .herramientas, .educacion,
-    .capacitaciones,
-    .experiencia__laboral, .contacto) ul {
-    padding: 1em;
-    list-style-type: none;
-}
-
-body :is(.localidad, .herramientas, .educacion,
-    .capacitaciones,
-    .experiencia__laboral, .contacto) ul:hover {
-    background-color: rgb(90, 88, 88);
-}
-
-body :is(.localidad, .herramientas, .educacion,
-    .capacitaciones,
-    .experiencia__laboral, .contacto) li {
-    background-color: #fffaf4;
-    border: solid thin rgb(200, 201, 201);
-    color: black;
-    padding: 1em;
-}
-
-
-
-/* formulario */
-.contacto {
-    text-align: center;
-}
-
-.contacto h3 {
-    font-size: 1.7rem;
-}
-
-
-
-form label {
-    color: black;
-    font-size: 1.3rem;
-
-}
-
-form article {
-    margin-top: 1em;
-}
-
-form :is(input, textarea) {
-    font-size: 1.1rem;
-}
-
-button[type="submit"] {
-    width: 5rem;
-    height: 2rem;
-    font-size: 1rem;
-    background-color: #59d2a5;
-    color: black;
-    cursor: pointer;
-
-}
-
-button[type="submit"]:active {
-    transform: scale(0.9);
-    transition: transform 0.1s ease;
-}
-
-/* Fin estilos formulario */
-
-
-/** Fin estilos main **/
